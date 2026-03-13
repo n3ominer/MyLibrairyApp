@@ -1,6 +1,7 @@
 package com.example.mylibraryapp.mocks
 
 import com.example.mylibraryapp.models.Book
+import com.example.mylibraryapp.models.Genre
 
 /**
  * Liste de tous les livres disponibles
@@ -127,5 +128,20 @@ fun getBooks(): List<Book> {
             genre = "Biographie",
             description = "La biographie autorisée"
         )
+    )
+}
+
+fun getGenres(): List<Genre> {
+    return listOf(
+        Genre(1, "Tous", isSelected = true),
+        Genre(2, "Roman"),
+        Genre(3, "Science-Fiction"),
+        Genre(4, "Fantasy"),
+        Genre(5, "Thriller"),
+        Genre(6, "Policier"),
+        Genre(7, "Biographie"),
+        Genre(8, "Histoire"),
+        Genre(9, "Philosophie"),
+        Genre(10, "Développement personnel")
     )
 }
