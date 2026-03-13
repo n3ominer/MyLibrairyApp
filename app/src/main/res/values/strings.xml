@@ -1,0 +1,9 @@
+<resources>
+    <!--            KEY      TRANSALTION -->
+    <string name="app_name">MyLibraryApp</string>
+    <string name="app_logo_content_description">Logo de l\'application</string>
+    <string name="app_name_login_screen">My Library App</string>
+    <string name="email_text_input_hint">Email</string>
+    <string name="password_login_page_hint_input_text">Password</string>
+    <string name="login_screen_login_button">Connexion</string>
+</resources>
