@@ -4,6 +4,15 @@
     <string name="app_logo_content_description">Logo de l\'application</string>
     <string name="app_name_login_screen">My Library App</string>
     <string name="email_text_input_hint">Email</string>
-    <string name="password_login_page_hint_input_text">Password</string>
+    <string name="password_login_page_hint_input_text">Mot de passe</string>
     <string name="login_screen_login_button">Connexion</string>
+    <string name="login_subtitle">Votre bibliothèque personnelle</string>
+    <string name="login_welcome">Bienvenue 👋</string>
+    <string name="login_instruction">Connectez-vous pour continuer</string>
+    <string name="book_cover_description">Couverture du livre</string>
+    <string name="book_rating_description">Note du livre</string>
+    <string name="home_title">Ma Bibliothèque 📚</string>
+    <string name="your_collection_home_subtitle">Explorez votre collection</string>
+    <string name="categories_section_subtitle">Catégories</string>
+    <string name="all_books_section_subtitle">Tous les livres</string>
 </resources>

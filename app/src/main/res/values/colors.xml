@@ -2,4 +2,39 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!-- Palette principale  -->
+    <color name="primary">#1A237E</color>
+    <color name="primary_variant">#283593</color>
+    <color name="primary_light">#3F51B5</color>
+    <color name="primary_surface">#E8EAF6</color>
+
+    <!-- Accent chaud -->
+    <color name="accent">#FF6F00</color>
+    <color name="accent_light">#FFB300</color>
+
+    <!-- Fonds et surfaces -->
+    <color name="background">#F5F6FA</color>
+    <color name="surface">#FFFFFF</color>
+    <color name="surface_variant">#EEEEEE</color>
+
+    <!-- Textes -->
+    <color name="text_primary">#1A1A2E</color>
+    <color name="text_secondary">#6B7280</color>
+    <color name="text_hint">#9CA3AF</color>
+    <color name="text_on_primary">#FFFFFF</color>
+
+    <!-- États -->
+    <color name="success">#2E7D32</color>
+    <color name="error">#C62828</color>
+    <color name="divider">#E0E0E0</color>
+
+    <!-- Étoiles / rating -->
+    <color name="star_color">#FFC107</color>
+
+    <!-- Chip sélectionné -->
+    <color name="chip_selected_bg">#1A237E</color>
+    <color name="chip_selected_text">#FFFFFF</color>
+    <color name="chip_unselected_bg">#FFFFFF</color>
+    <color name="chip_unselected_text">#1A237E</color>
 </resources>
