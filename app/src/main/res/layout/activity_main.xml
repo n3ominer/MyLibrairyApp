@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -7,32 +6,110 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center_horizontal"
+    android:background="@color/background"
     tools:context=".MainActivity">
 
+    <!-- Header : titre de la bibliothèque -->
+    <LinearLayout
+        android:id="@+id/home_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingHorizontal="20dp"
+        android:paddingTop="20dp"
+        android:paddingBottom="12dp"
+        android:background="@color/surface"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/home_title"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            android:textColor="@color/text_primary" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/your_collection_home_subtitle"
+            android:textSize="13sp"
+            android:textColor="@color/text_secondary"
+            android:layout_marginTop="2dp" />
+
+    </LinearLayout>
+
+    <!-- Divider sous le header -->
+    <View
+        android:id="@+id/home_divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/divider"
+        app:layout_constraintTop_toBottomOf="@id/home_header" />
+
+    <!-- Section label Genres -->
+    <TextView
+        android:id="@+id/home_genres_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/categories_section_subtitle"
+        android:textSize="13sp"
+        android:textStyle="bold"
+        android:textColor="@color/text_secondary"
+        android:textAllCaps="true"
+        android:letterSpacing="0.1"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="12dp"
+        app:layout_constraintTop_toBottomOf="@id/home_divider"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!-- Liste horizontale des genres -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/home_genre_recyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        app:layout_constraintTop_toTopOf="parent"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:paddingBottom="8dp"
+        android:paddingTop="8dp"
+        android:clipToPadding="false"
+        android:layout_marginTop="4dp"
         android:orientation="horizontal"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/book_genre_cell_layout"
-        />
+        app:layout_constraintTop_toBottomOf="@id/home_genres_label"
+        tools:listitem="@layout/book_genre_cell_layout" />
 
-    <!-- LISTE - RECYCLER VIEW -->
+    <!-- Section label Livres -->
+    <TextView
+        android:id="@+id/home_books_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/all_books_section_subtitle"
+        android:textSize="13sp"
+        android:textStyle="bold"
+        android:textColor="@color/text_secondary"
+        android:textAllCaps="true"
+        android:letterSpacing="0.1"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="4dp"
+        app:layout_constraintTop_toBottomOf="@id/home_genre_recyclerView"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!-- Liste verticale des livres -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/home_books_recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="0.dp"
-        android:layout_marginTop="16dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:clipToPadding="false"
+        android:paddingBottom="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/home_genre_recyclerView"
-        tools:itemCount="8"
+        app:layout_constraintTop_toBottomOf="@id/home_books_label"
+        app:layout_constraintVertical_bias="1.0"
+        tools:itemCount="5"
+        tools:layout_editor_absoluteX="0dp"
         tools:listitem="@layout/book_cell_layout" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
