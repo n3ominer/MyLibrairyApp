@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mylibraryapp.mocks.getBooks
@@ -11,9 +13,15 @@ import com.example.mylibraryapp.mocks.getGenres
 
 class MainActivity : AppCompatActivity() {
 
-    // Views
+    // ----------------------------------------------------------------
+    // Déclaration des vues
+    // ----------------------------------------------------------------
     private lateinit var booksRv: RecyclerView
     private lateinit var genreRv: RecyclerView
+
+    // ----------------------------------------------------------------
+    // Déclaration des adapters
+    // ----------------------------------------------------------------
     private lateinit var booksAdapter: BooksAdapter
     private lateinit var genreAdapter: GenreAdapter
 
@@ -22,46 +30,57 @@ class MainActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
 
+        // Gérer les marges système (barre de statut, barre de navigation)
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            insets
+        }
+
         bindViews()
-        setupRecyclerView()
+        setupRecyclerViews()
     }
 
+    // ----------------------------------------------------------------
+    // Connexion Kotlin → XML (récupération des vues)
+    // ----------------------------------------------------------------
     private fun bindViews() {
         booksRv = findViewById(R.id.home_books_recyclerView)
         genreRv = findViewById(R.id.home_genre_recyclerView)
     }
 
-    private fun setupRecyclerView() {
+    // ----------------------------------------------------------------
+    // Configuration des deux RecyclerViews
+    // ----------------------------------------------------------------
+    private fun setupRecyclerViews() {
+        setupGenreRv()   // Genres en premier (nécessaire pour le filtrage)
         setupBooksRv()
-        setupGenreRv()
     }
 
     private fun setupBooksRv() {
-        // Configurer l'adapter
-        this.booksAdapter = BooksAdapter(getBooks()) { bookData ->
-            // Intent vers le detail d'un livre
-            // Intent(this, BookDetail::class.java
-            // "Rempli" l'intent des données de `bookData`
-            // On startActivity(intent)
+        // Créer l'adapter avec tous les livres
+        booksAdapter = BooksAdapter(getBooks()) { selectedBook ->
+            // Quand l'utilisateur clique sur un livre
             Toast.makeText(
                 this,
-                "Genre: ${bookData.genre}",
-                Toast.LENGTH_LONG
+                "📖 ${selectedBook.title}",
+                Toast.LENGTH_SHORT
             ).show()
         }
 
-        // Définir le layout manager
         booksRv.layoutManager = LinearLayoutManager(this)
-
-        // Assigner l'Adapter
-        booksRv.adapter = this.booksAdapter
-
-        // Liste de VH <==> data (getBooks())
+        booksRv.adapter = booksAdapter
     }
 
     private fun setupGenreRv() {
-        this.genreAdapter = GenreAdapter(getGenres())
+        // Créer l'adapter avec tous les genres
+        genreAdapter = GenreAdapter(getGenres()) { selectedGenre ->
+            // Quand l'utilisateur clique sur un chip de genre,
+            // on filtre la liste des livres dans booksAdapter
+            booksAdapter.filterByGenre(selectedGenre.name)
+        }
+
         genreRv.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-        genreRv.adapter = this.genreAdapter
+        genreRv.adapter = genreAdapter
     }
 }
