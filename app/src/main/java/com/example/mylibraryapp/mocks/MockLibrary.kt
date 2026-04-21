@@ -6,7 +6,7 @@ import com.example.mylibraryapp.models.Genre
 /**
  * Liste de tous les livres disponibles
  */
-fun getBooks(): List<Book> {
+/*fun getBooks(): List<Book> {
     return listOf(
         Book(
             id = 1,
@@ -145,3 +145,4 @@ fun getGenres(): List<Genre> {
         Genre(10, "Développement personnel")
     )
 }
+*/

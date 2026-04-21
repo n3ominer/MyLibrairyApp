@@ -4,12 +4,11 @@ package com.example.mylibraryapp.models
  * Modèle représentant un livre
  */
 data class Book(
-    val id: Int,
+    val id: String,
     val title: String,
-    val author: String,
-    val imageUrl: String,
-    val rating: Float,  // Note sur 5
-    val publicationDate: String,
+    val authors: String,
+    val thumbnailUrl: String?,
+    val rating: Int,
     val genre: String,
-    val description: String = ""
+    val description: String?
 )

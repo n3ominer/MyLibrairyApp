@@ -76,7 +76,7 @@ class BookViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
     fun bind(livre: Book) {
         titleTextView.text = livre.title
-        authorTextView.text = livre.author
+        authorTextView.text = livre.authors
         genreTextView.text = livre.genre
         ratingTextView.text = livre.rating.toString()
     }

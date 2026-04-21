@@ -6,10 +6,14 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.mylibraryapp.mocks.getBooks
-import com.example.mylibraryapp.mocks.getGenres
+import com.example.mylibraryapp.models.Book
+import com.example.mylibraryapp.models.Genre
+import com.example.mylibraryapp.repositories.GoogleBooksRepository
+import kotlinx.coroutines.launch
+import java.lang.Exception
 
 class MainActivity : AppCompatActivity() {
 
@@ -25,6 +29,12 @@ class MainActivity : AppCompatActivity() {
     private lateinit var booksAdapter: BooksAdapter
     private lateinit var genreAdapter: GenreAdapter
 
+    // ----------------------------------------------------------------
+    // Repositories (sources de données)
+    // ----------------------------------------------------------------
+
+    private val booksRepository = GoogleBooksRepository()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -38,7 +48,19 @@ class MainActivity : AppCompatActivity() {
         }
 
         bindViews()
-        setupRecyclerViews()
+        getData()
+    }
+
+
+    private fun getData() {
+        lifecycleScope.launch {
+            try {
+              val books = booksRepository.searchBooks("bitcoin")
+                setupRecyclerViews(books)
+            } catch (e: Exception) {
+
+            }
+        }
     }
 
     // ----------------------------------------------------------------
@@ -52,14 +74,21 @@ class MainActivity : AppCompatActivity() {
     // ----------------------------------------------------------------
     // Configuration des deux RecyclerViews
     // ----------------------------------------------------------------
-    private fun setupRecyclerViews() {
-        setupGenreRv()   // Genres en premier (nécessaire pour le filtrage)
-        setupBooksRv()
+    private fun setupRecyclerViews(books: List<Book>) {
+        val genres = books.map { Genre(id = it.genre.hashCode(), name = it.genre, isSelected = false) }
+            .distinct()
+            .sortedBy { it.name }
+            .toMutableList()
+
+        genres.add(Genre(id = 0, name = "Tous", true))
+
+        setupGenreRv(genres)   // Genres en premier (nécessaire pour le filtrage)
+        setupBooksRv(books)
     }
 
-    private fun setupBooksRv() {
+    private fun setupBooksRv(books: List<Book>) {
         // Créer l'adapter avec tous les livres
-        booksAdapter = BooksAdapter(getBooks()) { selectedBook ->
+        booksAdapter = BooksAdapter(books) { selectedBook ->
             // Quand l'utilisateur clique sur un livre
             Toast.makeText(
                 this,
@@ -72,9 +101,9 @@ class MainActivity : AppCompatActivity() {
         booksRv.adapter = booksAdapter
     }
 
-    private fun setupGenreRv() {
+    private fun setupGenreRv(genres: List<Genre>) {
         // Créer l'adapter avec tous les genres
-        genreAdapter = GenreAdapter(getGenres()) { selectedGenre ->
+        genreAdapter = GenreAdapter(genres) { selectedGenre ->
             // Quand l'utilisateur clique sur un chip de genre,
             // on filtre la liste des livres dans booksAdapter
             booksAdapter.filterByGenre(selectedGenre.name)
