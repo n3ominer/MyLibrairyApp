@@ -54,12 +54,12 @@ class LoginActivity : AppCompatActivity() {
 
             // Validation simple : les deux champs doivent être remplis
             if (email.isEmpty() || password.isEmpty()) {
-                Toast.makeText(this, "Veuillez remplir tous les champs", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.error_empty_fields), Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
             // Connexion réussie → naviguer vers MainActivity
-            Toast.makeText(this, "Bienvenue ! 👋", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.toast_welcome), Toast.LENGTH_SHORT).show()
 
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)

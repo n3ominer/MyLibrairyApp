@@ -1,6 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!--  Locale par défaut : Français  -->
-    <!--  Pour ajouter une langue : créer res/values-XX/strings.xml  -->
+    <!--
+        Locale explicitement française.
+        Ce fichier est pédagogique : il montre comment déclarer un qualificateur de locale.
+        Son contenu est identique à values/strings.xml (locale par défaut).
+    -->
 
     <!-- App -->
     <string name="app_name">MyLibraryApp</string>
@@ -28,7 +32,7 @@
     <string name="book_cover_description">Couverture du livre</string>
     <string name="book_rating_description">Note du livre</string>
 
-    <!-- Pluriels : exemple pédagogique -->
+    <!-- Pluriels -->
     <plurals name="book_count">
         <item quantity="one">%d livre</item>
         <item quantity="other">%d livres</item>
