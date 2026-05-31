@@ -56,7 +56,7 @@ class MainActivity : AppCompatActivity() {
         lifecycleScope.launch {
             try {
               val books = booksRepository.searchBooks("bitcoin")
-                setupRecyclerViews(books)
+              setupRecyclerViews(books)
             } catch (e: Exception) {
 
             }

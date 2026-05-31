@@ -1,148 +1,144 @@
 package com.example.mylibraryapp.mocks
 
 import com.example.mylibraryapp.models.Book
-import com.example.mylibraryapp.models.Genre
 
-/**
- * Liste de tous les livres disponibles
- */
-/*fun getBooks(): List<Book> {
-    return listOf(
+object MockLibrary {
+
+    fun getBooks(): List<Book> = listOf(
         Book(
-            id = 1,
+            id = "mock-1",
             title = "1984",
-            author = "George Orwell",
-            imageUrl = "<https://images-na.ssl-images-amazon.com/images/I/71kxa1-0mfL.jpg>",
-            rating = 4.7f,
-            publicationDate = "1949",
+            authors = "George Orwell",
+            thumbnailUrl = null,
+            rating = 5,
             genre = "Science-Fiction",
-            description = "Roman dystopique sur un régime totalitaire"
+            description = "Roman dystopique sur un régime totalitaire où Big Brother surveille tout."
         ),
         Book(
-            id = 2,
+            id = "mock-2",
             title = "Le Seigneur des Anneaux",
-            author = "J.R.R. Tolkien",
-            imageUrl = "<https://images-na.ssl-images-amazon.com/images/I/91jBdIDK8hL.jpg>",
-            rating = 4.9f,
-            publicationDate = "1954",
+            authors = "J.R.R. Tolkien",
+            thumbnailUrl = null,
+            rating = 5,
             genre = "Fantasy",
-            description = "Épopée fantasy légendaire"
+            description = "Épopée fantasy légendaire dans le monde de la Terre du Milieu."
         ),
         Book(
-            id = 3,
-            title = "Harry Potter à l'école des sorciers",
-            author = "J.K. Rowling",
-            imageUrl = "<https://images-na.ssl-images-amazon.com/images/I/81YOuOGFCJL.jpg>",
-            rating = 4.8f,
-            publicationDate = "1997",
+            id = "mock-3",
+            title = "Harry Potter à l'École des Sorciers",
+            authors = "J.K. Rowling",
+            thumbnailUrl = null,
+            rating = 5,
             genre = "Fantasy",
-            description = "Le début de l'aventure magique"
+            description = "Le début de l'aventure magique d'un jeune sorcier."
         ),
         Book(
-            id = 4,
+            id = "mock-4",
             title = "L'Étranger",
-            author = "Albert Camus",
-            imageUrl = "<https://images-na.ssl-images-amazon.com/images/I/71cVq3LmqqL.jpg>",
-            rating = 4.3f,
-            publicationDate = "1942",
+            authors = "Albert Camus",
+            thumbnailUrl = null,
+            rating = 4,
             genre = "Philosophie",
-            description = "Roman philosophique sur l'absurde"
+            description = "Roman philosophique sur l'absurde et l'indifférence."
         ),
         Book(
-            id = 5,
+            id = "mock-5",
             title = "Le Petit Prince",
-            author = "Antoine de Saint-Exupéry",
-            imageUrl = "<https://images-na.ssl-images-amazon.com/images/I/71O7FmVeXrL.jpg>",
-            rating = 4.6f,
-            publicationDate = "1943",
+            authors = "Antoine de Saint-Exupéry",
+            thumbnailUrl = null,
+            rating = 5,
             genre = "Roman",
-            description = "Conte poétique et philosophique"
+            description = "Conte poétique et philosophique sur l'amitié et la vie."
         ),
         Book(
-            id = 6,
+            id = "mock-6",
             title = "Dune",
-            author = "Frank Herbert",
-            imageUrl = "<https://images-na.ssl-images-amazon.com/images/I/81ym3QcYwbL.jpg>",
-            rating = 4.5f,
-            publicationDate = "1965",
+            authors = "Frank Herbert",
+            thumbnailUrl = null,
+            rating = 5,
             genre = "Science-Fiction",
-            description = "Chef-d'œuvre de la SF"
+            description = "Chef-d'œuvre de la science-fiction sur une planète désertique."
         ),
         Book(
-            id = 7,
+            id = "mock-7",
             title = "Les Misérables",
-            author = "Victor Hugo",
-            imageUrl = "<https://images-na.ssl-images-amazon.com/images/I/91HHxxtA1wL.jpg>",
-            rating = 4.4f,
-            publicationDate = "1862",
+            authors = "Victor Hugo",
+            thumbnailUrl = null,
+            rating = 4,
             genre = "Roman",
-            description = "Fresque sociale du XIXe siècle"
+            description = "Fresque sociale du XIXe siècle autour de Jean Valjean."
         ),
         Book(
-            id = 8,
+            id = "mock-8",
             title = "Gone Girl",
-            author = "Gillian Flynn",
-            imageUrl = "<https://images-na.ssl-images-amazon.com/images/I/81xqYZ8HSRL.jpg>",
-            rating = 4.2f,
-            publicationDate = "2012",
+            authors = "Gillian Flynn",
+            thumbnailUrl = null,
+            rating = 4,
             genre = "Thriller",
-            description = "Thriller psychologique captivant"
+            description = "Thriller psychologique captivant sur la disparition d'Amy Dunne."
         ),
         Book(
-            id = 9,
+            id = "mock-9",
             title = "Sapiens",
-            author = "Yuval Noah Harari",
-            imageUrl = "<https://images-na.ssl-images-amazon.com/images/I/713jIoMO3UL.jpg>",
-            rating = 4.6f,
-            publicationDate = "2011",
+            authors = "Yuval Noah Harari",
+            thumbnailUrl = null,
+            rating = 5,
             genre = "Histoire",
-            description = "Une brève histoire de l'humanité"
+            description = "Une brève histoire de l'humanité, des origines à aujourd'hui."
         ),
         Book(
-            id = 10,
+            id = "mock-10",
             title = "La Vérité sur l'Affaire Harry Quebert",
-            author = "Joël Dicker",
-            imageUrl = "<https://images-na.ssl-images-amazon.com/images/I/81ZBQS+FpyL.jpg>",
-            rating = 4.5f,
-            publicationDate = "2012",
+            authors = "Joël Dicker",
+            thumbnailUrl = null,
+            rating = 4,
             genre = "Policier",
-            description = "Enquête policière passionnante"
+            description = "Enquête policière et roman dans le roman, best-seller mondial."
         ),
         Book(
-            id = 11,
+            id = "mock-11",
             title = "Atomic Habits",
-            author = "James Clear",
-            imageUrl = "<https://images-na.ssl-images-amazon.com/images/I/81YkqyaFVEL.jpg>",
-            rating = 4.7f,
-            publicationDate = "2018",
+            authors = "James Clear",
+            thumbnailUrl = null,
+            rating = 5,
             genre = "Développement personnel",
-            description = "Transformer sa vie grâce aux habitudes"
+            description = "Comment transformer sa vie grâce aux petites habitudes."
         ),
         Book(
-            id = 12,
+            id = "mock-12",
             title = "Steve Jobs",
-            author = "Walter Isaacson",
-            imageUrl = "<https://images-na.ssl-images-amazon.com/images/I/81VStYnDGrL.jpg>",
-            rating = 4.5f,
-            publicationDate = "2011",
+            authors = "Walter Isaacson",
+            thumbnailUrl = null,
+            rating = 4,
             genre = "Biographie",
-            description = "La biographie autorisée"
+            description = "La biographie autorisée du co-fondateur d'Apple."
+        ),
+        Book(
+            id = "mock-13",
+            title = "Clean Code",
+            authors = "Robert C. Martin",
+            thumbnailUrl = null,
+            rating = 5,
+            genre = "Informatique",
+            description = "Les principes pour écrire un code lisible et maintenable."
+        ),
+        Book(
+            id = "mock-14",
+            title = "Le Mythe de Sisyphe",
+            authors = "Albert Camus",
+            thumbnailUrl = null,
+            rating = 4,
+            genre = "Philosophie",
+            description = "Essai sur l'absurde et la révolte face à la condition humaine."
+        ),
+        Book(
+            id = "mock-15",
+            title = "Fondation",
+            authors = "Isaac Asimov",
+            thumbnailUrl = null,
+            rating = 5,
+            genre = "Science-Fiction",
+            description = "La saga de la psychohistoire et de la chute d'un empire galactique."
         )
     )
 }
-
-fun getGenres(): List<Genre> {
-    return listOf(
-        Genre(1, "Tous", isSelected = true),
-        Genre(2, "Roman"),
-        Genre(3, "Science-Fiction"),
-        Genre(4, "Fantasy"),
-        Genre(5, "Thriller"),
-        Genre(6, "Policier"),
-        Genre(7, "Biographie"),
-        Genre(8, "Histoire"),
-        Genre(9, "Philosophie"),
-        Genre(10, "Développement personnel")
-    )
-}
-*/
