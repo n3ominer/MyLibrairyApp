@@ -24,7 +24,6 @@ class GoogleBooksRepository(
             if (e.code() == 429) MockLibrary.getBooks()
             else throw e
         } catch (e: Exception) {
-            // Pas de réseau, timeout, etc. → fallback local
             MockLibrary.getBooks()
         }
     }

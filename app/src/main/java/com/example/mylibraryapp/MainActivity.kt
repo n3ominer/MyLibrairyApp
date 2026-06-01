@@ -75,8 +75,9 @@ class MainActivity : AppCompatActivity() {
     // Configuration des deux RecyclerViews
     // ----------------------------------------------------------------
     private fun setupRecyclerViews(books: List<Book>) {
-        val genres = books.map { Genre(id = it.genre.hashCode(), name = it.genre, isSelected = false) }
-            .distinct()
+        val genres = books.map {
+            Genre(id = it.genre.hashCode(), name = it.genre, isSelected = false)
+        }.distinct()
             .sortedBy { it.name }
             .toMutableList()
 
@@ -86,13 +87,25 @@ class MainActivity : AppCompatActivity() {
         setupBooksRv(books)
     }
 
+
+    /*
+    SharedPreferences
+    {
+        "email": "azeoiuazuoie@aoize.fr",
+        "isLoggedIn: true,
+
+
+    }
+    read & write
+
+     */
     private fun setupBooksRv(books: List<Book>) {
         // Créer l'adapter avec tous les livres
         booksAdapter = BooksAdapter(books) { selectedBook ->
             // Quand l'utilisateur clique sur un livre
             Toast.makeText(
                 this,
-                "📖 ${selectedBook.title}",
+                "${getString(R.string.book_to_read_description)} 📖 ${selectedBook.title}",
                 Toast.LENGTH_SHORT
             ).show()
             // Exemple d'utilisation d'un pluriel :

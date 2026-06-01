@@ -2,11 +2,13 @@ package com.example.mylibraryapp
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.CheckBox
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.mylibraryapp.utils.SharedPreferencesManager
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputEditText
 
@@ -18,6 +20,10 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var emailEditText: TextInputEditText
     private lateinit var passwordEditText: TextInputEditText
     private lateinit var loginButton: MaterialButton
+
+    private lateinit var sharedPreferencesManager: SharedPreferencesManager
+
+    private lateinit var rememberMeCheckBox: CheckBox
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,8 +37,24 @@ class LoginActivity : AppCompatActivity() {
             insets
         }
 
+        sharedPreferencesManager = SharedPreferencesManager(this)
+        if (sharedPreferencesManager.isLoggedIn() && sharedPreferencesManager.rememberMe()) {
+            // Auto-login --> user already logged in, move to main activity
+            // Start intent From LoginActivity -> MainActivity
+            navigateToMain()
+            return
+        }
+        restoreUserEmail()
         bindViews()
+
         setupClickListeners()
+    }
+
+    fun restoreUserEmail() {
+        if(sharedPreferencesManager.rememberMe()) {
+            emailEditText.setText(sharedPreferencesManager.getEmail())
+            rememberMeCheckBox.isChecked = true
+        }
     }
 
     // ----------------------------------------------------------------
@@ -42,6 +64,7 @@ class LoginActivity : AppCompatActivity() {
         emailEditText    = findViewById(R.id.login_screen_email_editText)
         passwordEditText = findViewById(R.id.login_screen_password_editText)
         loginButton      = findViewById(R.id.login_screen_login_button)
+        rememberMeCheckBox = findViewById(R.id.login_screen_remember_me_checkbox)
     }
 
     // ----------------------------------------------------------------
@@ -61,9 +84,18 @@ class LoginActivity : AppCompatActivity() {
             // Connexion réussie → naviguer vers MainActivity
             Toast.makeText(this, getString(R.string.toast_welcome), Toast.LENGTH_SHORT).show()
 
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-            finish() // Ferme LoginActivity pour ne pas y revenir avec le bouton retour
+            val remember = rememberMeCheckBox.isChecked
+            sharedPreferencesManager.saveRememberMe(remember)
+            sharedPreferencesManager.saveIsLoggedIn(true)
+            if(remember) sharedPreferencesManager.saveUserEmail(email)
+
+            navigateToMain()
         }
+    }
+
+    private fun navigateToMain() {
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
+        finish() // Ferme LoginActivity pour ne pas y revenir avec le bouton retour
     }
 }

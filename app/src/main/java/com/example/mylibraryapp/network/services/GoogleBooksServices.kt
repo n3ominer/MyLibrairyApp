@@ -1,6 +1,7 @@
 package com.example.mylibraryapp.network.services
 
 import com.example.mylibraryapp.dto.VolumesResponseDto
+import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.Query
 

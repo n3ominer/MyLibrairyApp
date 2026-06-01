@@ -144,6 +144,13 @@
                         android:inputType="textPassword" />
                 </com.google.android.material.textfield.TextInputLayout>
 
+                <CheckBox
+                    android:id="@+id/login_screen_remember_me_checkbox"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:text="@string/remember_me_text"
+                    android:textSize="14sp"
+                    />
                 <!-- Bouton Connexion -->
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/login_screen_login_button"
