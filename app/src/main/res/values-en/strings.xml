@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- English translations -->
+
+    <!-- App -->
+    <string name="app_name">MyLibraryApp</string>
+    <string name="app_logo_content_description">Application logo</string>
+    <string name="app_name_login_screen">My Library App</string>
+
+    <!-- Login screen -->
+    <string name="email_text_input_hint">Email</string>
+    <string name="password_login_page_hint_input_text">Password</string>
+    <string name="login_screen_login_button">Sign in</string>
+    <string name="login_subtitle">Your personal library</string>
+    <string name="login_welcome">Welcome 👋</string>
+    <string name="login_instruction">Sign in to continue</string>
+    <string name="error_empty_fields">Please fill in all fields</string>
+    <string name="toast_welcome">Welcome!</string>
+
+    <!-- Home screen -->
+    <string name="home_title">My Library 📚</string>
+    <string name="your_collection_home_subtitle">Explore your collection</string>
+    <string name="categories_section_subtitle">Categories</string>
+    <string name="all_books_section_subtitle">All books</string>
+    <string name="genre_all">All</string>
+
+    <!-- Accessibility -->
+    <string name="book_cover_description">Book cover</string>
+    <string name="book_rating_description">Book rating</string>
+
+    <!-- Plurals -->
+    <plurals name="book_count">
+        <item quantity="one">%d book</item>
+        <item quantity="other">%d books</item>
+    </plurals>
+</resources>

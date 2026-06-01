@@ -80,7 +80,7 @@ class MainActivity : AppCompatActivity() {
             .sortedBy { it.name }
             .toMutableList()
 
-        genres.add(Genre(id = 0, name = "Tous", true))
+        genres.add(Genre(id = 0, name = getString(R.string.genre_all), true))
 
         setupGenreRv(genres)   // Genres en premier (nécessaire pour le filtrage)
         setupBooksRv(books)
@@ -95,6 +95,8 @@ class MainActivity : AppCompatActivity() {
                 "📖 ${selectedBook.title}",
                 Toast.LENGTH_SHORT
             ).show()
+            // Exemple d'utilisation d'un pluriel :
+            // resources.getQuantityString(R.plurals.book_count, books.size, books.size)
         }
 
         booksRv.layoutManager = LinearLayoutManager(this)
