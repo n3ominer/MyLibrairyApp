@@ -69,6 +69,6 @@ class SharedPreferencesManager(context: Context) {
     {}
      */
     fun clear() {
-        sharedPrefs.edit { clear() }
+        sharedPrefs.edit { clear().apply() }
     }
 }

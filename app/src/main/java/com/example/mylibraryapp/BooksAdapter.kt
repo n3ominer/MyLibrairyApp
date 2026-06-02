@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mylibraryapp.models.Book
+import com.example.mylibraryapp.utils.BookFilter
 
 class BooksAdapter(
     // La liste complète des livres (elle ne change jamais)
@@ -48,14 +49,8 @@ class BooksAdapter(
     // Filtrer la liste par genre
     // Appelé depuis MainActivity quand l'utilisateur sélectionne un chip
     // ----------------------------------------------------------------
-    fun filterByGenre(genre: String) {
-        displayedBooks = if (genre == "Tous") {
-            // "Tous" → on réaffiche tous les livres
-            books
-        } else {
-            // On garde uniquement les livres dont le genre correspond
-            books.filter { it.genre == genre }
-        }
+    fun filterByGenre(genre: String, defaultLabel: String = "Tous") {
+        displayedBooks = BookFilter.filterByGenre(books, genre, defaultLabel)
         // Notifier le RecyclerView que les données ont changé
         // ⚠️ notifyDataSetChanged() rafraîchit TOUTE la liste.
         // C'est la méthode la plus simple (on verra des alternatives plus tard)

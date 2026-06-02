@@ -148,7 +148,7 @@
                     android:id="@+id/login_screen_remember_me_checkbox"
                     android:layout_height="wrap_content"
                     android:layout_width="match_parent"
-                    android:text="@string/remember_me_text"
+                    android:text="@string/se_souvenir_de_moi"
                     android:textSize="14sp"
                     />
                 <!-- Bouton Connexion -->

@@ -27,6 +27,8 @@
     <!-- Accessibility -->
     <string name="book_cover_description">Book cover</string>
     <string name="book_rating_description">Book rating</string>
+    <string name="se_souvenir_de_moi">Se souvenir de moi ?</string>
+    <string name="profile_page_title">Bonjour</string>
 
     <!-- Plurals -->
     <plurals name="book_count">

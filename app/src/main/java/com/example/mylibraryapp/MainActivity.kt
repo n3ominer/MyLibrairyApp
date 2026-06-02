@@ -1,6 +1,8 @@
 package com.example.mylibraryapp
 
+import android.content.Intent
 import android.os.Bundle
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -22,6 +24,7 @@ class MainActivity : AppCompatActivity() {
     // ----------------------------------------------------------------
     private lateinit var booksRv: RecyclerView
     private lateinit var genreRv: RecyclerView
+    private lateinit var profileUserButton: ImageView
 
     // ----------------------------------------------------------------
     // Déclaration des adapters
@@ -69,6 +72,12 @@ class MainActivity : AppCompatActivity() {
     private fun bindViews() {
         booksRv = findViewById(R.id.home_books_recyclerView)
         genreRv = findViewById(R.id.home_genre_recyclerView)
+        profileUserButton = findViewById(R.id.profile_button)
+
+        profileUserButton.setOnClickListener {
+            val intent = Intent(this, UserProfileActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     // ----------------------------------------------------------------
@@ -105,7 +114,7 @@ class MainActivity : AppCompatActivity() {
             // Quand l'utilisateur clique sur un livre
             Toast.makeText(
                 this,
-                "${getString(R.string.book_to_read_description)} 📖 ${selectedBook.title}",
+                "📖 ${selectedBook.title}",
                 Toast.LENGTH_SHORT
             ).show()
             // Exemple d'utilisation d'un pluriel :
