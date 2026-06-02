@@ -17,7 +17,7 @@ class GoogleBooksRepository(
      */
     suspend fun searchBooks(query: String, maxResults: Int = 40): List<Book> {
         return try {
-            val response = api.searchVolumes(query = query, maxResults = maxResults)
+            val response = RetrofitClient.googleBooksApi.searchVolumes(query = query, maxResults = maxResults)
             val books = response.items.orEmpty().mapNotNull { it.toBookOrNull() }
             books.ifEmpty { MockLibrary.getBooks() }
         } catch (e: HttpException) {

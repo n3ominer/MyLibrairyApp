@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.mylibraryapp.models.Book
 import com.example.mylibraryapp.models.Genre
 import com.example.mylibraryapp.repositories.GoogleBooksRepository
+import com.example.mylibraryapp.repositories.OpenLibraryRepository
 import kotlinx.coroutines.launch
 import java.lang.Exception
 
@@ -36,7 +37,9 @@ class MainActivity : AppCompatActivity() {
     // Repositories (sources de données)
     // ----------------------------------------------------------------
 
-    private val booksRepository = GoogleBooksRepository()
+    private val googleBooksRepository = GoogleBooksRepository()
+
+    private val openLibBooksRepository = OpenLibraryRepository()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -58,7 +61,8 @@ class MainActivity : AppCompatActivity() {
     private fun getData() {
         lifecycleScope.launch {
             try {
-              val books = booksRepository.searchBooks("bitcoin")
+                //                                     Load data
+              val books = openLibBooksRepository.searchBooks("bitcoin")
               setupRecyclerViews(books)
             } catch (e: Exception) {
 
