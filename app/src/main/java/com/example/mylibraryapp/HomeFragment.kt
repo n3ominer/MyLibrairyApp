@@ -36,20 +36,8 @@ class HomeFragment : Fragment() {
     // Repositories (sources de données)
     // ----------------------------------------------------------------
 
-    private val googleBooksRepository = GoogleBooksRepository()
-
     private val openLibBooksRepository = OpenLibraryRepository()
 
-
-
-
-
-
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
 
     // STEP 1
     override fun onCreateView(
@@ -57,17 +45,24 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false)
+        return inflater.inflate(R.layout.fragment_home, container, false) // V
     }
 
-    // STEP 2
+    // |
+    // |
+    // |
+    // v
+
+    // STEP 2                         V
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // Binding
         bindViews(view)
+
+        // View interaction
         getData()
     }
-
 
 
     private fun getData() {

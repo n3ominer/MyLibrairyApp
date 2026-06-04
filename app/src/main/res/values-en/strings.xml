@@ -29,6 +29,7 @@
     <string name="book_rating_description">Book rating</string>
     <string name="se_souvenir_de_moi">Se souvenir de moi ?</string>
     <string name="profile_page_title">Bonjour</string>
+    <string name="bottom_nav_home_title">Accueil</string>
 
     <!-- Plurals -->
     <plurals name="book_count">
