@@ -40,4 +40,5 @@
     <string name="bottom_nav_home_title">Accueil</string>
     <string name="bottom_nav_search_title">Recherche</string>
     <string name="bottom_nav_profile_title">Profil</string>
+    <string name="harry_potter">Harry Potter</string>
 </resources>

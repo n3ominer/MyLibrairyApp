@@ -33,6 +33,7 @@ class MainActivity : AppCompatActivity() {
             when(menuItem.itemId) {
                 R.id.home -> { showFragment(HomeFragment()); true}
                 R.id.profile -> { showFragment(ProfileFragment()); true }
+                R.id.search -> { showFragment(SearchPageFragment()); true }
                 else -> false
             }
         }
